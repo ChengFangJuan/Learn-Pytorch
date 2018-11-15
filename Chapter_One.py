@@ -40,7 +40,3 @@ def argmax_g(x):
 
 yref_test = argmax_g(x_test)
 print(yref_test)
-
-
-
-
