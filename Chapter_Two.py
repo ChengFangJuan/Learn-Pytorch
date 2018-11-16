@@ -134,32 +134,43 @@ ts1 = torch.stack([tp,tn], 1)
 print(ts1)
 print(ts1.size())
 
+print('---------- computer ---------')
+tl = torch.Tensor([[1., 2., 3.], [4., 5., 6.]])
+tr = torch.Tensor([[7., 8., 9], [10., 11., 12]])
+print(tl + tr)
+print(tl - tr)
+print(tl * tr)
+print(tl / tr)
+print(tl ** tr)
+print(tl ** (1 / tr))
+
+print('------------ exp pow sin clamp')
+print(tl.exp())
+print(tl.pow(2))
+print(tl.sin())
+print(tl.clamp(0,4))
+
+print('---------- dot --------------') # 向量与向量相乘
+x = torch.arange(4)
+y = torch.arange(1,5)
+print(torch.dot(x,y))
+
+print('-------- mv -------') # 向量与矩阵相乘
+x = x.view(2,2)
+print(x)
+y = torch.arange(2)
+print(y)
+print(torch.mv(x,y))
+
+print('------ mm --------') # 矩阵与矩阵相乘
+x = torch.arange(6).view(2,3)
+y = torch.arange(6).view(3,2)
+print(torch.mm(x,y))
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+num_sample = 10000000
+sample = torch.rand(num_sample,2)
+dist = sample.norm(p = 2, dim = 1)
+ratio = (dist < 1).float().mean()
+pi = ratio * 4
+print(pi)
