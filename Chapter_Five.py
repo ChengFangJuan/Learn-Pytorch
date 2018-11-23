@@ -135,12 +135,6 @@ def plot():
     plt.plot(index_list1, loss_list2, color='r')
     plt.show()
 
-
-
-
-
-
-
 if __name__ == "__main__":
     # one_line()
     # two()
