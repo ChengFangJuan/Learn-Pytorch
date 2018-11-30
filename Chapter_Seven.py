@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 import torch
 import torch.nn as nn
+import torch.optim
 
 #产生样本数据
 torch.manual_seed(seed=0)
@@ -35,3 +36,8 @@ for idx, hidden in enumerate(hidden_features):
     layers.append(nn.Linear(hidden,next_hidden_feature))
 
 net = nn.Sequential(*layers)
+
+print(net)
+
+optimizer = torch.optim.Adam(net.parameters())
+criterion = nn.MSELoss()
