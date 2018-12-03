@@ -41,3 +41,23 @@ print(net)
 
 optimizer = torch.optim.Adam(net.parameters())
 criterion = nn.MSELoss()
+
+train_entry_num = 600
+
+n_iter = 100000
+loss_train = 100
+loss_validate = 100
+for step in range(n_iter):
+    outputs = net(features)
+    preds = outputs.squeeze()
+
+    loss_train = criterion(preds[:train_entry_num], labels[:train_entry_num])
+    loss_validate = criterion(preds[train_num:-test_num], labels[train_num:-test_num])
+    if step % 10000 == 0:
+        print("train MSE : {0}, valid MSE : {1}".format(loss_train, loss_validate))
+
+    optimizer.zero_grad()
+    loss_train.backward()
+    optimizer.step()
+
+print("train MSE : {0}, valid MSE : {1}".format(loss_train, loss_validate))
